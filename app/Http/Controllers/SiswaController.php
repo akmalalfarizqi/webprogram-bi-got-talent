@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lomba;
+use App\Models\User;
 use App\Models\Pendaftaran;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,13 @@ class SiswaController extends Controller
 
         return view('siswa.dashboard', compact('lombas', 'riwayat'));
     }
+
+public function editSiswa($id)
+{
+    $siswa = User::findOrFail($id);
+
+    return view('admin.edit_siswa', compact('siswa'));
+}
 
  public function daftarLomba(Request $request)
     {
